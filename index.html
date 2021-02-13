@@ -11,11 +11,23 @@
 
 <body>
     <div id="timer" class="timer">
-        <!-- Timer to show time remaining for quiz -->
+        <!-- Timer to show time remaining for quiz, to be displayed top right of screen always -->
         <h1>Time Remaining: <span id="time-left">75</span> </h1>
     </div>
-    <!-- Initial Start Screen -->
-    <div id="start" class="start">
+ 
+    <div class="container">
+        <!--hidden question container to be displayed by button press-->
+        <div id="question-container" class="hide">
+            <div id="question">Questions</div>
+            <!-- multiple choice buttons -->
+            <div id="choices" class="choice-btns">
+                <button class="choiceBtn">Choice 1</button>
+                <button class="choiceBtn">Choice 2</button>
+                <button class="choiceBtn">Choice 3</button>
+                <button class="choiceBtn">Choice 4</button>
+            </div>
+        </div>
+        <!--start screen before button press-->
         <h1>
             Javascript Quiz Challenge
         </h1>
@@ -24,7 +36,10 @@
             seconds, so choose wisely!
         </p>
         <!-- Button to start the quiz -->
-        <button id="start-btn">Start Quiz!</button>
+        <div class="startNext">
+            <button id="start-btn">Start Quiz!</button>
+            <button id="next-btn" class="next-btn hide">Next Question</button>
+        </div>
     </div>
     <script src=./assets/script.js></script>
 </body>

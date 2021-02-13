@@ -1,3 +1,7 @@
 * {
     background-color: palegreen;
 }
+#start-btn, #next-btn {
+    background-color: white;
+    padding: 10px;
+}

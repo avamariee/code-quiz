@@ -1,6 +1,10 @@
 // variable to select the start button
 var startButton = document.getElementById("start-btn");
 
+//variable to select body for DOM manipulation
+
+var body = document.body;
+
 // variable to keep track of the user's score
 var scoreTracker = 0;
 
@@ -31,18 +35,40 @@ for (let i = 0; i < questions.length; i++) {
     }
 }
 
+// function to display questions
+
+function displayQuestion() {
+
+    // code to display questions
+    var quizQuestion = document.createElement("h2")
+    var questionTitle = document.textContent(question.Q);
+    quizQuestion.appendChild(questionTitle);
+    document.body.appendChild(quizQuestion);
+    // code to display choices
+
+}
+
+// eventListener to start the quiz when the button is pushed
+startButton.addEventListener("click", function () {
+    if (questions < 4 && timeLeft > 0) {
+
+        displayQuestion();
+
+    } else {
+        
+        // stop showing questions and display final score
+
+    }
+})
+
 // when game ends display final score and have user input their intials to save score in local storage
 
 scoreTracker = timeLeft;
 
 // display high scores
 
-// eventListener to start the quiz when the button is pushed
-startButton.addEventListener("click", function () {
-    if (questions < 4 && timeLeft > 0) {
+// user clicks button to start game
+startButton.onlick = displayQuestion;
 
-        // code to display question and choices
 
-    }
-})
 
