@@ -1,7 +1,10 @@
 * {
-    background-color: palegreen;
+    background-color: wheat;
 }
 #start-btn, #next-btn {
     background-color: white;
     padding: 10px;
+}
+.choiceBtn {
+    background-color: white;
 }
