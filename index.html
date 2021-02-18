@@ -18,23 +18,25 @@
     <div class="container">
         <!--hidden question container to be displayed by button press-->
         <div id="question-container" class="hide">
-            <div id="question">Questions</div>
+            <div id="question"></div>
             <!-- multiple choice buttons -->
-            <div id="choices" class="choice-btns">
-                <button class="choiceBtn">Choice 1</button>
-                <button class="choiceBtn">Choice 2</button>
-                <button class="choiceBtn">Choice 3</button>
-                <button class="choiceBtn">Choice 4</button>
+            <div id="choices">
+                <button id ="choice-btn" class="choiceBtn">Choice 1</button>
+                <button id="choice-btn"  class="choiceBtn">Choice 2</button>
+                <button id="choice-btn"  class="choiceBtn">Choice 3</button>
+                <button id="choice-btn"  class="choiceBtn">Choice 4</button>
             </div>
         </div>
         <!--start screen before button press-->
-        <h1>
-            Javascript Quiz Challenge
-        </h1>
-        <p>
-            Answer the following questions before the time runs out! Each wrong question will penalize your time by 10
-            seconds, so choose wisely!
-        </p>
+        <div id="start-text">
+            <h1>
+                Javascript Quiz Challenge
+            </h1>
+            <p>
+                Answer the following questions before the time runs out! Each wrong question will penalize your time by 10
+                seconds, so choose wisely!
+            </p>
+        </div>
         <!-- Button to start the quiz -->
         <div class="startNext">
             <button id="start-btn">Start Quiz!</button>
