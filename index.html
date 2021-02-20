@@ -10,36 +10,36 @@
 </head>
 
 <body>
-    <div id="timer" class="timer">
+    <div id="timer" class="hide">
         <!-- Timer to show time remaining for quiz, to be displayed top right of screen always -->
-        <h1>Time Remaining: <span id="time-left">75</span> </h1>
+        <h1 class="timer">Time Remaining: <span id="time-left">75</span> </h1>
     </div>
- 
+
     <div class="container">
         <!--hidden question container to be displayed by button press-->
         <div id="question-container" class="hide">
             <div id="question"></div>
             <!-- multiple choice buttons -->
             <div id="choices">
-                <button id ="choice-btn" class="choiceBtn">Choice 1</button>
-                <button id="choice-btn"  class="choiceBtn">Choice 2</button>
-                <button id="choice-btn"  class="choiceBtn">Choice 3</button>
-                <button id="choice-btn"  class="choiceBtn">Choice 4</button>
+                <button id="choice-btn" class="choice-btn">Choice 1</button>
+                <button id="choice-btn" class="choice-btn">Choice 2</button>
+                <button id="choice-btn" class="choice-btn">Choice 3</button>
+                <button id="choice-btn" class="choice-btn">Choice 4</button>
             </div>
         </div>
         <!--start screen before button press-->
-        <div id="start-text">
+        <div id="start-text" class="start-text">
             <h1>
                 Javascript Quiz Challenge
             </h1>
             <p>
-                Answer the following questions before the time runs out! Each wrong question will penalize your time by 10
-                seconds, so choose wisely!
+                Answer the following questions before the time runs out! <br>
+                Each wrong question will penalize your time by 10 seconds, so choose wisely!
             </p>
         </div>
         <!-- Button to start the quiz -->
-        <div class="startNext">
-            <button id="start-btn">Start Quiz!</button>
+        <div class="start-next">
+            <button id="start-btn" class="start-btn">Start Quiz!</button>
             <!-- this button will be hidden until activated by javascript -->
             <button id="next-btn" class="next-btn hide">Next Question</button>
         </div>

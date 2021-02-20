@@ -1,9 +1,29 @@
 * {
-    background-color: wheat;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-.choiceBtn {
-    background-color: white;
+
+/* button styles */
+
+.start-btn, .next-btn, .choice-btn {
+    display: inline-block;
+    background-color: rgb(96, 250, 186);
+    padding: 1em 2em;
+    border: 0.6em solid #FFFFFF;
+    margin: 3px;
+    border-radius:2em;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: ease-in 0.2s;
+    font-weight:600;
+    font-size: large;
+
 }
+.start-btn:hover, .next-btn:hover, .choice-btn:hover {
+    background-color: rgba(95, 255, 188, 0.5)
+}
+
 .hide {
     display: none;
 }
