@@ -8,7 +8,7 @@
 .start-btn, .next-btn, .choice-btn {
     display: inline-block;
     background-color: rgb(96, 250, 186);
-    padding: 1em 2em;
+    padding: .7em 2em;
     border: 0.6em solid #FFFFFF;
     margin: 3px;
     border-radius:2em;
