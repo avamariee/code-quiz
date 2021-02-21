@@ -25,14 +25,19 @@ let shuffledQuestions, currentQuestionIndex
 // variable to keep track of time left
 var timeLeft = 75;
 
-// variable to keep track of the user's score
-var scoreTracker = 0;
+// variable to select html of timer
+var timerSpan = document.getElementById("time-left")
+var timerEl = document.getElementById("timer")
 
 // varaible for correct sound effect
 var correctSound = document.getElementById("correct-sound")
 
 //variable for incorrect sound
 var incorrectSound = document.getElementById("incorrect-sound")
+
+// variable to select scores form
+
+var scoresForm = document.getElementById("scores-form")
 
 // quiz questions array
 var questions = [
@@ -79,7 +84,32 @@ var questions = [
     }
 ]
 
-console.log(questions[0].choices[1].choice)
+// function to start timer
+
+var timer
+ function startTimer(){
+     timer = setInterval(function() {timerCount()}, 1000);
+ }
+ function timerCount (){
+
+    if (timeLeft > 1 && currentQuestionIndex < questions.length) {
+
+        timerSpan.textContent = timeLeft + ' seconds left.'
+        timeLeft -- ;
+        
+
+    } else {
+
+        timerSpan.textContent = '';
+        clearInterval(timer)
+        endQuiz();
+    }
+}
+
+ 
+
+   
+
 // function to start the quiz
 function startQuiz() {
 
@@ -91,9 +121,10 @@ function startQuiz() {
     currentQuestionIndex = 0;
     // add code to display question container element
     questionContainerEl.classList.remove("hide");
+    timerEl.classList.remove("hide");
+    startTimer();
+
     displayNextQuestion();
-
-
 
 }
 
@@ -106,21 +137,17 @@ function displayNextQuestion() {
     displayQuestion(shuffledQuestions[currentQuestionIndex])
     questionChoices(questions.choices)
 
-
-
 }
 
 function displayQuestion(questions) {
 
     questionEl.innerText = questions.Q
 
-
 }
 
 // function to pick the correct answer in relation to the displayed question
 
 function questionChoices() {
-
     // check if currentQuestionIndex > length of the questions (stop condition), if greater than, stop the timer/clock. 
     if (currentQuestionIndex > questions.length) {
 
@@ -134,9 +161,6 @@ function questionChoices() {
 
         for (let j = 0; j < 4; j++) {
 
-            // console.log(questions[0].choices[j].choice)
-            // console.log(j)
-
             // create a button with event listener, append it to id of "choices"
             const choiceBtn = document.createElement("button")
             choiceBtn.classList.add("choice-btn")
@@ -147,9 +171,6 @@ function questionChoices() {
 
 
                 var questionAnswer = (questions[currentQuestionIndex].choices[choiceBtn.id].correct)
-
-                console.log(currentQuestionIndex)
-
 
                 if (questionAnswer === true) {
 
@@ -167,6 +188,7 @@ function questionChoices() {
                     incorrectMsg.innerText = "Incorrect! -10 seconds."
                     document.getElementById("choices").appendChild(incorrectMsg)
                     incorrectSound.play();
+                    timeLeft -= 10
 
                 }
 
@@ -180,21 +202,10 @@ function questionChoices() {
 
 
             })
-            document.getElementById("choices").appendChild(choiceBtn)
-
-            // // on click event for the buttons, true/false logic, add currentQuestionIndex++, call questionChoices() again from function 
+            document.getElementById("choices").appendChild(choiceBtn)        
         }
-
-
-
-
-
     }
-
-
-
 }
-
 
 
 
@@ -204,6 +215,18 @@ function questionChoices() {
 // function to end the quiz
 
 function endQuiz() {
+
+    // hide the quiz buttons once more
+    questionContainerEl.classList.add("hide");
+    timerEl.classList.add("hide");
+
+    let endGameText = document.createElement("h2")
+            endGameText.classList.add("end-game")
+            endGameText.innerText = "Time's up!"
+            document.getElementById("endGame").appendChild(endGameText)
+
+
+    displayScores();
 
 
 
@@ -217,8 +240,17 @@ function displayScores() {
 
     // when game ends display final score and have user input their intials to save score in local storage
 
-    scoreTracker = timeLeft;
-}
+    let scores = document.createElement("h2")
+    scores.classList.add("end-game")
+    scores.innerText = "You got " + timeLeft + " points!"
+    document.getElementById("endGame").appendChild(scores)
+
+    scoresForm.classList.remove("hide");
+
+    
+    
+
+   }
 
 
 // eventListener to start the quiz when the button is pushed

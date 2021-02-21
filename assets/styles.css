@@ -5,7 +5,7 @@
 
 /* button styles */
 
-.start-btn, .next-btn, .choice-btn {
+.start-btn, .next-btn, .choice-btn, .score-btn {
     display: inline-block;
     background-color: rgb(96, 250, 186);
     padding: .7em 2em;
@@ -18,16 +18,27 @@
     transition: ease-in 0.2s;
     font-weight:600;
     font-size: large;
+    text-decoration: none;
+    color: black;
 
 }
-.start-btn:hover, .next-btn:hover, .choice-btn:hover {
-    background-color: rgba(95, 255, 188, 0.5)
+.start-btn:hover, .next-btn:hover, .choice-btn:hover, .score-btn:hover {
+    background-color: rgba(24, 134, 88, 0.5)
 }
 
 .hide {
     display: none;
 }
 
+.timer {
+    text-align: right;
+    font-size: 20px;
+}
+
+.questions {
+    font-size: 30px;
+    padding: 20px;
+}
 /* correct/incorrect messasge stylings */
 
 .correct {
@@ -43,4 +54,29 @@
     font-style: italic;
     font-weight: bold;
     color: red;
+}
+
+/* end game text */
+
+.end-game {
+    font-weight: bold;
+}
+
+/* scores form styles */
+
+.scores-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+
+    padding: 5px;
+    border-radius: 10px;
+    outline: none;
+    border-color: rgb(96, 250, 186);
+
+
 }
