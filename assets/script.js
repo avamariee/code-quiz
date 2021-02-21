@@ -29,15 +29,24 @@ var timeLeft = 75;
 var timerSpan = document.getElementById("time-left")
 var timerEl = document.getElementById("timer")
 
-// varaible for correct sound effect
+// variable for correct sound effect
 var correctSound = document.getElementById("correct-sound")
 
-//variable for incorrect sound
+// variable for incorrect sound
 var incorrectSound = document.getElementById("incorrect-sound")
 
 // variable to select scores form
-
 var scoresForm = document.getElementById("scores-form")
+
+// variable for number of high scores
+
+
+// variable to select save button
+var saveButton = document.getElementById("saveScoreBtn")
+
+// variable to select play again button
+
+var playAgain = document.getElementById("playAgain")
 
 // quiz questions array
 var questions = [
@@ -87,16 +96,16 @@ var questions = [
 // function to start timer
 
 var timer
- function startTimer(){
-     timer = setInterval(function() {timerCount()}, 1000);
- }
- function timerCount (){
+function startTimer() {
+    timer = setInterval(function () { timerCount() }, 1000);
+}
+function timerCount() {
 
     if (timeLeft > 1 && currentQuestionIndex < questions.length) {
 
         timerSpan.textContent = timeLeft + ' seconds left.'
-        timeLeft -- ;
-        
+        timeLeft--;
+
 
     } else {
 
@@ -106,9 +115,9 @@ var timer
     }
 }
 
- 
 
-   
+
+
 
 // function to start the quiz
 function startQuiz() {
@@ -202,7 +211,7 @@ function questionChoices() {
 
 
             })
-            document.getElementById("choices").appendChild(choiceBtn)        
+            document.getElementById("choices").appendChild(choiceBtn)
         }
     }
 }
@@ -214,16 +223,18 @@ function questionChoices() {
 
 // function to end the quiz
 
+let endGameText = document.createElement("h2")
+
 function endQuiz() {
 
     // hide the quiz buttons once more
     questionContainerEl.classList.add("hide");
     timerEl.classList.add("hide");
 
-    let endGameText = document.createElement("h2")
-            endGameText.classList.add("end-game")
-            endGameText.innerText = "Time's up!"
-            document.getElementById("endGame").appendChild(endGameText)
+
+    endGameText.classList.add("end-game")
+    endGameText.innerText = "Time's up!"
+    document.getElementById("endGame").appendChild(endGameText)
 
 
     displayScores();
@@ -234,23 +245,76 @@ function endQuiz() {
 }
 
 
+
 // function to display user's score
+
+let scores = document.createElement("h2")
 
 function displayScores() {
 
     // when game ends display final score and have user input their intials to save score in local storage
 
-    let scores = document.createElement("h2")
+
     scores.classList.add("end-game")
     scores.innerText = "You got " + timeLeft + " points!"
     document.getElementById("endGame").appendChild(scores)
 
     scoresForm.classList.remove("hide");
 
-    
-    
 
-   }
+
+}
+
+// save score button logic
+
+saveButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var highScoreInitals = document.querySelector("#userInitials").value;
+    var highScore = timeLeft;
+
+
+     localStorage.setItem("high-scores", JSON.stringify([highScore]))
+     localStorage.setItem("user-initials", JSON.stringify([highScoreInitals]))
+
+    highScores();
+
+    // high scores page
+
+    function highScores() {
+
+        scores.classList.add('hide')
+        scoresForm.classList.add('hide')
+        endGameText.classList.add("hide")
+        playAgain.classList.remove("hide")
+
+        const highScores = JSON.parse(localStorage.getItem("high-scores")) || []
+        const highScoresIn = JSON.parse(localStorage.getItem("user-initials")) || []
+
+        const score = {
+
+            score: highScores,
+            name: highScoresIn
+        }
+
+
+        highScores.push(score)
+      
+
+
+
+
+
+        let highScoresList = document.createElement("ul")
+        highScoresList.classList.add("end-game")
+        let highScoresListLi = document.createElement("li")
+        highScoresListLi.classList.add("end-game")
+        highScoresListLi.textContent = "Score: " + highScore + " Initials: " + highScoreInitals
+        document.getElementById("endGame").appendChild(highScoresList)
+        document.getElementById("endGame").appendChild(highScoresListLi)
+    }
+
+})
 
 
 // eventListener to start the quiz when the button is pushed
