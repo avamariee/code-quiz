@@ -7,7 +7,7 @@ https://avamariee.github.io/code-quiz/
 
 > This application is a Javascript Code Quiz.
 >
-> There are 5 multiple choice questions. An incorrect answer will display incorrect with a sound, and a correct answer will display correct with a sound.
+> There are 4 multiple choice questions. An incorrect answer will display incorrect with a sound, and a correct answer will display correct with a sound.
 >
 > Each incorrect answer will subtract 10 seconds from the timer.
 >
