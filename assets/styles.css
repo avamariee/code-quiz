@@ -27,3 +27,20 @@
 .hide {
     display: none;
 }
+
+/* correct/incorrect messasge stylings */
+
+.correct {
+
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(58, 248, 58);
+    
+}
+
+.incorrect { 
+
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+}

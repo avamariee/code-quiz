@@ -28,6 +28,12 @@ var timeLeft = 75;
 // variable to keep track of the user's score
 var scoreTracker = 0;
 
+// varaible for correct sound effect
+var correctSound = document.getElementById("correct-sound")
+
+//variable for incorrect sound
+var incorrectSound = document.getElementById("incorrect-sound")
+
 // quiz questions array
 var questions = [
 
@@ -86,7 +92,7 @@ function startQuiz() {
     // add code to display question container element
     questionContainerEl.classList.remove("hide");
     displayNextQuestion();
-    
+
 
 
 }
@@ -95,11 +101,11 @@ function startQuiz() {
 
 function displayNextQuestion() {
 
-    console.log(shuffledQuestions,currentQuestionIndex)
+    console.log(shuffledQuestions, currentQuestionIndex)
 
     displayQuestion(shuffledQuestions[currentQuestionIndex])
     questionChoices(questions.choices)
-   
+
 
 
 }
@@ -144,36 +150,33 @@ function questionChoices() {
 
                 console.log(currentQuestionIndex)
 
+
                 if (questionAnswer === true) {
 
-                    alert("Correct!")
-
-                    
-                    
-
-
-
-
+                    let correctMsg = document.createElement("h2")
+                    correctMsg.classList.add("correct")
+                    correctMsg.innerText = "Correct!"
+                    document.getElementById("choices").appendChild(correctMsg)
+                    correctSound.play();
 
 
                 } else {
 
-                    alert("Incorrect!")
-
-
-
-
-
+                    let incorrectMsg = document.createElement("h2")
+                    incorrectMsg.classList.add("incorrect")
+                    incorrectMsg.innerText = "Incorrect! -10 seconds."
+                    document.getElementById("choices").appendChild(incorrectMsg)
+                    incorrectSound.play();
 
                 }
 
-                setTimeout(function (){
+                setTimeout(function () {
 
                     displayNextQuestion(currentQuestionIndex++);
 
 
                 }, 1000)
-                
+
 
 
             })
@@ -188,17 +191,11 @@ function questionChoices() {
 
     }
 
-    // const body = document.querySelector("body")
 
-
-    // body.addEventListener("click", function (e) {
-
-    //     console.log(e.target.id)
-
-
-    // })
 
 }
+
+
 
 
 

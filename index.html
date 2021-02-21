@@ -21,12 +21,8 @@
             <div id="question">Questions</div>
             <!-- multiple choice buttons -->
             <div id="choices">
-
-                <!-- <button id="choice-btn" class="choice-btn">Choice 1</button>
-                <button id="choice-btn" class="choice-btn">Choice 2</button>
-                <button id="choice-btn" class="choice-btn">Choice 3</button>
-                <button id="choice-btn" class="choice-btn">Choice 4</button> -->
-                
+                <audio id="correct-sound" src="./assets/sounds/131660__bertrof__game-sound-correct.wav"></audio>
+                <audio id="incorrect-sound" src="./assets/sounds/131657__bertrof__game-sound-wrong.wav"></audio>
             </div>
         </div>
         <!--start screen before button press-->
@@ -38,15 +34,15 @@
                 Answer the following questions before the time runs out! <br>
                 Each wrong question will penalize your time by 10 seconds, so choose wisely!
             </p>
+            
         </div>
         <!-- Button to start the quiz -->
         <div class="start-next">
             <button id="start-btn" class="start-btn">Start Quiz!</button>
-            <!-- this button will be hidden until activated by javascript -->
-            <button id="next-btn" class="next-btn hide">Next Question</button>
-        </div>
+            
+       </div>
     </div>
-    <script src=./assets/script.js></script>
+        <script src=./assets/script.js></script>
 </body>
 
 </html>
